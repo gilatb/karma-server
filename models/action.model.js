@@ -7,7 +7,7 @@ const ActionSchema = new Schema({
     type: String,
     required: true,
   },
-  exp_points: {
+  expPoints: {
     type: Number,
     required: true,
   },

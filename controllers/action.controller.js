@@ -7,5 +7,21 @@ const getActions = async (ctx) => {
   ctx.body = actions;
 };
 
+const addAction = async (ctx) => {
+  const {
+    description,
+    expPoints,
+    difficulty,
+    category,
+  } = ctx.request.body;
+  const action = await new Action({
+    description,
+    expPoints,
+    difficulty,
+    category,
+  }).save();
+  ctx.status = 201;
+  ctx.body = action;
+};
 
-module.exports = { getActions };
+module.exports = { getActions, addAction };

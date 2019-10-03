@@ -3,19 +3,19 @@ const db = require('../db');
 const { Schema } = db;
 
 const UserSchema = Schema({
-  user_name: {
+  userName: {
     type: String,
     unique: true,
     required: true,
   },
-  user_password: {
+  userPassword: {
     type: String,
     required: true,
   },
-  curr_level: {
+  currLevel: {
     type: Number,
   },
-  curr_exp: {
+  currExp: {
     type: Number,
   },
   completedActions: {

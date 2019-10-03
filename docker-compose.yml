@@ -1,21 +1,15 @@
 version: '3'
 services:
-  mongo:
-    image: mongo
-    restart: always
   node-server:
     restart: always
     build: .
     ports:
       - 3000:3000
-  result:
-    build: ./
-    command: nodemon index.js
-    volumes:
-     - ./:/app
-    environment:
-      - MONGODB_URI=mongodb://mongo:27017/karma2db
-      - MONGODB_URL=mongo/karma2db
+    links:
+      - mongo
+  mongo:
+    image: mongo
+    restart: always
   # mongo-express:
   #   image: mongo-express
   #   restart: always
@@ -24,10 +18,3 @@ services:
   #   environment:
   #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
   #     ME_CONFIG_MONGODB_ADMINPASSWORD: root  
-  # koa-server:
-  #   restart: always
-  #   build: '???'
-  #   ports:
-  #     - 6000:6000
-  #   environment:
-  #     - MONGODB_URL=mongodb://localhost:27017/karma2db
